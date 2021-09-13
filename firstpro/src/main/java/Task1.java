@@ -1,15 +1,31 @@
+import java.util.Arrays;
 public class Task1
 {
     //посчитать факториал числа n
     //0.5 балла - если посчитаете в цикле
     //1 балл - если посчитаете рекурсией
     public static int fact(int n){
-        return n;
+        int res = 1;
+        if(n <= 1){
+            res = 1;
+        }
+        else{
+            res = n * fact(n-1);
+        }
+        return res;
     }
 
     //вывести таблицу умножения на экран - 1 балл
     //подсказка - использовать двойной for
     public static void table(){
+
+        for(int i = 1; i < 10; i++){
+            for(int j = 1; j < 10; j++){
+                System.out.print(j * i + " ");
+            }
+            System.out.println("");
+        }
+
         //Ваше решение здесь
     }
 
@@ -18,7 +34,12 @@ public class Task1
     //для любого числа - 1 балл
     //подсказка - в случае для любого числа используйте while
     public static int sum(int n){
-        //Ваше решение здесь
+        int summ = 0;
+        while(n>0){
+            summ += n % 10;
+            n = (n - (n % 10))/10;
+        }
+        n = summ;
         return n;
     }
 
@@ -30,34 +51,69 @@ public class Task1
     //Годы 2100, 2200 и 2300 - не високосные.
     //за правильный ответ - 0.5 балла
     public static boolean isLeapYear(int year) {
-        //Ваше решение здесь
-        return true;
+        if(year % 4 == 0){
+            if(year % 100 == 0){
+                if(year % 400 == 0){
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else{
+                return true;
+            }
+        } else {
+            return false;
+        }
+        //return true;
     }
 
     //здесь вам нужно будет использовать результат прошлой задачи
     //и вывести, сколько дней в году
     //правильный ответ - 0.5 балла
     public static int daysInYear(int year) {
+        int days = 0;
         if (isLeapYear(year)){
-            //
+            days = 366;
         } else {
-            //
+            days = 365;
         }
-        return 0;
+        return days;
     }
 
     //определить номер дня недели по строке
     //например: Понедельник - 1
     //правильный ответ - 1 балл
     public static int dayOfTheWeek(String n){
-        //Ваше решение здесь
-        return 0;
+        int day = 0;
+        if(n == "Понедельник"){
+            day = 1;
+        }
+        if(n == "Вторник"){
+            day = 2;
+        }
+        if(n == "Среда"){
+            day = 3;
+        }
+        if(n == "Четверг"){
+            day = 4;
+        }
+        if(n == "Пятница"){
+            day = 5;
+        }
+        if(n == "Суббота"){
+            day = 6;
+        }
+        if(n == "Воскресенье"){
+            day = 7;
+        }
+        return day;
     }
 
     //вывести массив на экран в виде: [1, 5, 3, 7, 10, 2, 5]
     //правильное решение - 0.5 балла
     public static void printArray(int[] array){
-        //Ваше решение здесь
+        System.out.println(Arrays.toString(array));
     }
 
     //вывести двойной массив на экран в виде:
@@ -66,7 +122,9 @@ public class Task1
     // ...
     //правильное решение - 0.5 балла
     public static void printArray(int[][] array){
-        //Ваше решение здесь
+        for(int i = 0; i < array.length; i++){
+            System.out.println(Arrays.toString(array[i]));
+        }
     }
 
     //отсортировать одномерный массив в порядке возрастания
@@ -74,7 +132,15 @@ public class Task1
     //метод пузырька (один из самых простых для понимания)
     //правильный ответ - 1 балл
     public static int[] sort(int[] array){
-        //Ваше решение здесь
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < (array.length - i - 1); j++){
+                if(array[j] > array[j+1]){
+                    int a = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = a;
+                }
+            }
+        }
         return array;
     }
 
